@@ -1,7 +1,0 @@
-D:\git\Anachronox\Anchronox\DebugApp\obj\x86\Debug\ResolveAssemblyReference.cache
-D:\git\Anachronox\Anchronox\DebugApp\bin\Debug\DebugApp.exe
-D:\git\Anachronox\Anchronox\DebugApp\bin\Debug\DebugApp.pdb
-D:\git\Anachronox\Anchronox\DebugApp\obj\x86\Debug\DebugApp.exe
-D:\git\Anachronox\Anchronox\DebugApp\obj\x86\Debug\DebugApp.pdb
-D:\git\Anachronox\Anchronox\DebugApp\bin\Debug\DatSupport.dll
-D:\git\Anachronox\Anchronox\DebugApp\bin\Debug\DatSupport.pdb

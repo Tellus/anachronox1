@@ -9,7 +9,7 @@ namespace DebugApp
     {
         static void Main(string[] args)
         {
-            DAT_Extract.DatArchive df = new DAT_Extract.DatArchive();
+            DatSupport.DatArchive df = new DatSupport.DatArchive();
 
             df.OpenFile(@"D:\git\Anachronox\Anchronox\DebugApp\SPRITES.dat");
 

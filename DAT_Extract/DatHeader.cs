@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAT_Extract
+namespace DatSupport
 {
     /// <summary>
     /// Struct class for the header of a DAT file.

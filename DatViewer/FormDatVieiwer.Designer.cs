@@ -28,31 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.DatTreeView = new System.Windows.Forms.TreeView();
+            this.DatOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
-            // treeView1
+            // DatTreeView
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(576, 381);
-            this.treeView1.TabIndex = 0;
+            this.DatTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DatTreeView.Location = new System.Drawing.Point(0, 0);
+            this.DatTreeView.Name = "DatTreeView";
+            this.DatTreeView.Size = new System.Drawing.Size(600, 405);
+            this.DatTreeView.TabIndex = 0;
+            // 
+            // DatOpenFileDialog
+            // 
+            this.DatOpenFileDialog.DefaultExt = "dat";
+            this.DatOpenFileDialog.FileName = "openFileDialog1";
+            this.DatOpenFileDialog.Filter = "Anachronox DAT file|*.dat";
+            this.DatOpenFileDialog.ReadOnlyChecked = true;
+            this.DatOpenFileDialog.Title = "Pick DAT file.";
             // 
             // FormDatVieiwer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 405);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.DatTreeView);
             this.Name = "FormDatVieiwer";
-            this.Text = "Form1";
+            this.Text = "Anachronox Legacy DAT viewer.";
+            this.Load += new System.EventHandler(this.FormDatVieiwer_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView DatTreeView;
+        private System.Windows.Forms.OpenFileDialog DatOpenFileDialog;
     }
 }
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 
-namespace DAT_Extract
+namespace DatSupport
 {
     /// <summary>
     /// The DatFile class represents a complete DAT file used for storing data/files in Anachronox.
@@ -17,22 +17,22 @@ namespace DAT_Extract
         /// <summary>
         /// Path to the currently opened file.
         /// </summary>
-        string FilePath;
+        public string FilePath;
 
         /// <summary>
         /// Number of files contained within the DAT.
         /// </summary>
-        UInt32 FileCount;
+        public UInt32 FileCount;
 
         /// <summary>
         /// List of all files contained in the DAT.
         /// </summary>
-        List<DatFileInfo> Files;
+        public List<DatFileInfo> Files;
 
         /// <summary>
         /// File handle to the DAT archive. In later revisions I'll try to make this thing asynchronous.
         /// </summary>
-        FileStream DatFileHandle;
+        public FileStream DatFileHandle;
 
         public DatArchive()
         {

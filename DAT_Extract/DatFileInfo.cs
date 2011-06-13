@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DAT_Extract
+namespace DatSupport
 {
     /// <summary>
     /// Contains information about a single DAT file... file.
@@ -85,9 +85,11 @@ namespace DAT_Extract
         {
             List<string> retList = new List<string>();
             String path = FileName;
+            // Always add the default root... maybe?
+            // retList.Add(".");
             while (path.Contains(@"\"))
             {
-                retList.Add(path.Substring(0, path.IndexOf(@"\") + 1));
+                retList.Add(path.Substring(0, path.IndexOf(@"\")));
                 path = path.Substring(path.IndexOf(@"\") + 1);
             }
 
