@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace DatViewer
 {
@@ -20,8 +21,14 @@ namespace DatViewer
 
         private void FormDatVieiwer_Load(object sender, EventArgs e)
         {
+            doOpenFileAction();
+        }
+
+        protected void doOpenFileAction()
+        {
             DatOpenFileDialog.ShowDialog(this);
 
+            if (Archive != null) Archive.Dispose();
             Archive = new DatSupport.DatArchive(DatOpenFileDialog.FileName);
 
             // Do a swift refresh.
@@ -51,7 +58,6 @@ namespace DatViewer
 
             TreeNode baseNode = DatTreeView.Nodes[0]; // <root> node.
             TreeNode tmpNode;
-            TreeNode[] foundNodes;
             foreach (string s in dirPath)
             {
                 // We might have to make this finde work through children. It does, however, bear the risk of dir structure corruption.
@@ -69,7 +75,25 @@ namespace DatViewer
             // Finally, add the file itself.
             int lIndex = file.FileName.LastIndexOf(@"\");
             string fileName = file.FileName.Substring(lIndex == -1 ? 0 : lIndex + 1);
-            baseNode.Nodes.Add(fileName, fileName);
+            TreeNode newNode = baseNode.Nodes.Add(fileName, fileName);
+            newNode.Tag = file.FileName; // Tag the full name. Better style would be to make a small subclass of TreeNode.
+        }
+
+        private void OpenDatButton_Click(object sender, EventArgs e)
+        {
+            doOpenFileAction();
+        }
+
+        private void ExtractSingleButton_Click(object sender, EventArgs e)
+        {
+            DatSingleSaveDialog.ShowDialog(this);
+            Archive.ExtractFile((string)DatTreeView.SelectedNode.Tag, DatSingleSaveDialog.FileName).Close();
+        }
+
+        private void ExtractAllButton_Click(object sender, EventArgs e)
+        {
+            DatSaveAllDialog.ShowDialog(this);
+            Archive.ExtractAll(DatSaveAllDialog.FileName);
         }
     }
 }

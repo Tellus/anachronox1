@@ -12,7 +12,7 @@ namespace DatSupport
     /// It's preliminary goal is listing and extraction, with a secondary goal to work as a virtual
     /// file system handler.
     /// </summary>
-    public class DatArchive
+    public class DatArchive : IDisposable
     {
         /// <summary>
         /// Path to the currently opened file.
@@ -245,6 +245,18 @@ namespace DatSupport
         public DatFileInfo GetFileInfoByPath(string path)
         {
             return Files.First(f => f.FileName == path);
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                DatFileHandle.Close();
+            }
+            finally
+            {
+                // Do nothing.
+            }
         }
     }
 }
