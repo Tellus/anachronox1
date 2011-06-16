@@ -1,0 +1,43 @@
+AnoxTools - http://code.google.com/p/anachronox-modding/
+=========
+
+Copyright 2006, 2007 Richard Tew <richard.m.tew@gmail.com>
+
+Description:
+-----------
+
+This is a Python script library which can be used to do the work involved in
+reading and parsing the file formats that come with the game Anachronox.  the
+most functional part of it is the APE decompiler.
+
+Notes:
+-----
+
+* dparse.exe
+
+  There are two versions of dparse.exe, the APE compiler.  The first version
+dated 2001 comes with the original release of Anachrodox by the game
+developers.  The second version dated 2003 comes with one of the game patches
+named 'anox_build45_bin.exe' and is prone to crashes.  It is advised that the
+user obtain the 2001 version.
+
+* test.txt
+
+  test.txt is intended to be a testbed for all the various APE programming
+language constructs.  By compiling it and then decompiling it again, it
+should end up with essentially the same code as was initially compiled.
+
+As of 9th April 2007 I believe this is capable of decompiling all the APE
+scripts which come with Anachronox so that they can be recompiled without
+error.
+
+* What if I don't own the game?
+
+  You can most likely obtain the demo from somewhere and find APE files
+within that.  And 'dparse.exe' the APE compiler can be obtained from
+two places freely (as documented above).
+
+Credits:
+-------
+
+Thanks to Creaper and Laguna for their help and encouragement.

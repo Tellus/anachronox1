@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1da76a53-1fb1-49df-b371-7b2b6e4c9409}</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>D:\git\Anachronox\OLD_ApeDecompile\decompile.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <AssemblyName>OLD_ApeDecompile</AssemblyName>
+    <Name>OLD_ApeDecompile</Name>
+    <RootNamespace>OLD_ApeDecompile</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="anoxtools\APE\output.py" />
+    <None Include="anoxtools\APE\parser.py" />
+    <None Include="anoxtools\APE\parserEntities.py" />
+    <None Include="anoxtools\APE\__init__.py" />
+    <None Include="anoxtools\BSP.py" />
+    <None Include="anoxtools\contrib\Plex\Actions.py" />
+    <None Include="anoxtools\contrib\Plex\DFA.py" />
+    <None Include="anoxtools\contrib\Plex\Errors.py" />
+    <None Include="anoxtools\contrib\Plex\Lexicons.py" />
+    <None Include="anoxtools\contrib\Plex\Machines.py" />
+    <None Include="anoxtools\contrib\Plex\README" />
+    <None Include="anoxtools\contrib\Plex\Regexps.py" />
+    <None Include="anoxtools\contrib\Plex\Scanners.py" />
+    <None Include="anoxtools\contrib\Plex\test_tm.py" />
+    <None Include="anoxtools\contrib\Plex\Timing.py" />
+    <None Include="anoxtools\contrib\Plex\TODO" />
+    <None Include="anoxtools\contrib\Plex\Traditional.py" />
+    <None Include="anoxtools\contrib\Plex\Transitions.py" />
+    <None Include="anoxtools\contrib\Plex\__init__.py" />
+    <None Include="anoxtools\contrib\polygontessellator.py" />
+    <None Include="anoxtools\contrib\__init__.py" />
+    <None Include="anoxtools\DAT.py" />
+    <None Include="anoxtools\data.py" />
+    <None Include="anoxtools\GDB.py" />
+    <None Include="anoxtools\MD2.py" />
+    <None Include="anoxtools\structures.py" />
+    <None Include="anoxtools\texture.py" />
+    <None Include="anoxtools\__init__.py" />
+    <None Include="decompile.py" />
+    <None Include="LICENSE" />
+    <None Include="README" />
+    <None Include="test.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="anoxtools" />
+    <Folder Include="anoxtools\APE" />
+    <Folder Include="anoxtools\contrib" />
+    <Folder Include="anoxtools\contrib\Plex" />
+  </ItemGroup>
+</Project>

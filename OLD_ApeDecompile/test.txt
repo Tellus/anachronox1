@@ -1,0 +1,200 @@
+#window 1:1
+title "Titlar"
+pos 20, 50
+size 100, 200
+xyprint zzz, 4, 5, "ff %d", 2.0
+xyprintfx zzz, 4, 5, 6, 7, 8, ddddd, "dd %f", 3
+// style "style_embrace"
+style "NULL"
+startconsole "blah"
+finishconsole "foozle"
+// talk player talk_a nostay
+cam right to(toValue) from(fromValue) owner(ownerValue) yaw(39) pitch(40) far(1000) fwd(50) speed(12) lift(22) lag(14) near(200) occlude(no) fov(45) zip
+talk_ex bubba shrimp talk_a talk_b stay nostay
+choice "%s",wibble$, 3:3
+choice "%f",wibble, 3:3
+
+startswitch
+{
+    chainscripts hephtower2_scene1 hephtower2_scene2
+    playscene tenements_scene_with_grumpos 
+    loopscene tenements_scene_with_grumpos 
+    stopscene tenements_scene_with_grumpos 
+    playambient scommons_scientist_flies_into_building
+    loopambient scommons_scientist_flies_into_building
+    stopambient xscommons_scientist_flies_into_building
+    echo "ddd"
+    f = func_GameTime
+    set wibble = 0.01
+    set wobble = wibble - 1.0
+    WS_STAND$ = "stiletto_skill_1 %f", wibble
+    set talkedToGrumpos = (1.0 - (wibble / wobble)) / (wibble - 3.0)
+    unset wobble
+    unset wibble
+    if (talkedToGrumpos > 0 ^^ talkedToGrumpos >= 1) {
+        set xxx = 1.0
+        if (talkedToGrumpos <= 1) {
+            set xxx = 2.0
+            xxx = xxx * 2.0
+            if (talkedToGrumpos < 2 && "ddd" != "fff") {
+                set xxx = 2.0
+                set xxx = xxx * 2.0
+                if (talkedToGrumpos == 3) {
+                    gosub 30:3
+                } else if (WS_STAND$ == "wobbler") {
+                    if (WS_STAND$ != "wobbler")
+                        WS_STAND$ = "replaced"
+                    if ("wobbler" == WS_STAND$)
+                        WS_STAND$ = WS_STAND$
+                    set xxx = xxx * 4.0
+                    set xxx = xxx * 3.5
+                } else {
+                    set xxx = xxx * 4.0
+                    set xxx = xxx * 3.5
+                    if (xxx)
+                    	goto 32:5
+                }
+                set xxx = xxx * 3.0
+                console "ddd %f", xxx, "some", 3.4
+            }
+            set xxx = xxx * 2.0
+            counter = 0
+            while (counter < 10) {
+                A[$counter$] = 1
+                counter = counter + 1
+            }
+        }
+    }
+    set zzz = 1.0
+    X[$zzz$] = 2
+    
+    if (kidz)
+      ret = func_mod[3, 5]    
+    extern setvar_flexible "testname" 42.0
+
+    if (kids)
+      if (kids)
+        if(kids)
+          ret = mapname
+    ret = username
+    
+    goto 0:0
+}
+flags passive2d, TRUE
+flags passive, TRUE
+flags persist, TRUE
+flags noscroll, TRUE
+flags nograb, TRUE
+flags norelease, TRUE
+flags subtitle, TRUE
+subwindow 22:33
+if (r[1] > 0)
+    image "throwloonie/tl_lit.tga", X[1],y[1]
+image "blah.jpg" 10, 20, 4, 5, solid, tile, stretch
+image "blah.jpg" 10, 20, 4, 5, tile, stretch
+background "backdrop.bmp" stretch
+
+#window 1:2
+startswitch {
+    set wibble = 0.00001
+    set wibble = 0.0001
+    set wibble = 0.001
+    SomeString$="This\nLine\nHere"
+    console "echo Test this stuff %f", pooperX
+    closewindow 1:1
+}
+
+#switch 2005:220
+unset anox_interface_active
+unset ws_stand$
+
+#switch 1:8756
+console "ui_closeallwindows"
+if (@map < 16) {
+  if (@map == 1)
+    console "map tours fromtours2top"
+  if (@map == 2)
+    console "map tours fromtours2"
+  if (@map == 3)
+    console "map tours frombricksb"
+  if (@map == 4)
+    console "map tours2 fromss"
+  if (@map == 5)
+    console "map tours2 fromtourstop"
+  if (@map == 6)
+    console "map tours2 fromtours"
+  if (@map == 7)
+    console "map tours2 fromdettas"
+  if (@map == 8)
+    console "map bricksb"
+  if (@map == 9)
+    console "map bricksb fromtours"
+  if (@map == 10)
+    console "map bricksb frombricksc"
+  if (@map == 11)
+    console "map hovel frombricksc2"
+  if (@map == 12)
+    console "map rowdys"
+  if (@map == 13)
+    console "map bricksd fromwhacks"
+  if (@map == 14)
+    console "map bricksd fromrowdys"
+  if (@map == 15)
+    console "map bricksd frombricksc"
+} else if (@map < 32) {
+  if (@map == 16)
+    console "map bricksd fromzordos"
+  if (@map == 17)
+    console "map bricksd frommmuseum"
+  if (@map == 18)
+    console "map whacks"
+  if (@map == 19)
+    console "map zordos"
+  if (@map == 20)
+    console "map mmuseum"
+  if (@map == 21)
+    console "map onegate"
+  if (@map == 22)
+    console "map bricksc frombricksc2"
+  if (@map == 23)
+    console "map bricksc frombricksd"
+  if (@map == 24)
+    console "map bricksc frombricksb"
+  if (@map == 25)
+    console "map casinox"
+  if (@map == 26)
+    console "map tenements frombricksc2"
+  if (@map == 27)
+    console "map tenements fromgrumpos"
+  if (@map == 28)
+    console "map tenements frommystech1door"
+  if (@map == 29)
+    console "map tenements frommystech1"
+  if (@map == 30)
+    console "map tenements fromfranks"
+  if (@map == 31)
+    console "map bricksc2 frombricksc"
+} else {
+  if (@map == 32)
+    console "map bricksc2 fromhovel"
+  if (@map == 33)
+    console "map bricksc2 fromtenements"
+  if (@map == 34)
+    console "map franks"
+  if (@map == 35)
+    console "map grumpos"
+  if (@map == 36)
+    console "map mystech1 fromtenementsdoor"
+  if (@map == 37)
+    console "map mystech1 fromtenements"
+  if (@map == 38)
+    console "map mystech1 fromsewagic1"
+  if (@map == 39)
+    console "map mystech2"
+  if (@map == 40)
+    console "map sewagic1"
+  if (@map == 41)
+    console "map sewagic2 frommystech2"
+  if (@map == 42)
+    console "map sewagic2 fromsewagic1"
+}

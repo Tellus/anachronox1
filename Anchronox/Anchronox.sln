@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugApp", "DebugApp\DebugA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatViewer", "..\DatViewer\DatViewer.csproj", "{854D4E2E-47BB-48A4-9E0F-17E005606F1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApeSupport", "..\ApeSupport\ApeSupport.csproj", "{3044E33A-F763-4E3C-8BDA-44F2C403E468}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "OLD_ApeDecompile", "..\OLD_ApeDecompile\OLD_ApeDecompile.pyproj", "{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,30 @@ Global
 		{854D4E2E-47BB-48A4-9E0F-17E005606F1B}.Release|Win32.ActiveCfg = Release|x86
 		{854D4E2E-47BB-48A4-9E0F-17E005606F1B}.Release|x86.ActiveCfg = Release|x86
 		{854D4E2E-47BB-48A4-9E0F-17E005606F1B}.Release|x86.Build.0 = Release|x86
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|Win32.ActiveCfg = Release|Any CPU
+		{3044E33A-F763-4E3C-8BDA-44F2C403E468}.Release|x86.ActiveCfg = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|Win32.ActiveCfg = Release|Any CPU
+		{1DA76A53-1FB1-49DF-B371-7B2B6E4C9409}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
