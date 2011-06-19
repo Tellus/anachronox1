@@ -40,8 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApeMgr.cs" />
+    <Compile Include="ApeBinaryDataException.cs" />
+    <Compile Include="ApeCommand.cs" />
+    <Compile Include="ApeCore.cs" />
+    <Compile Include="ApeFile.cs" />
+    <Compile Include="ApeOperatorHelper.cs" />
+    <Compile Include="ApeSegment.cs" />
+    <Compile Include="ApeStatement.cs" />
+    <Compile Include="ApeValue.cs" />
+    <Compile Include="ApeWindow.cs" />
+    <Compile Include="EApeOperators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringValueAttribute.cs" />
+    <Compile Include="TitleApeCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

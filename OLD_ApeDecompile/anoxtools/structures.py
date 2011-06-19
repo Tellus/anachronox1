@@ -7,7 +7,7 @@ def ReadWord(f):
     return struct.unpack("<H", f.read(2))[0]
 
 def ReadInteger(f):
-    return struct.unpack("<I", f.read(4))[0]
+    return struct.unpack("<I", f.read(4))[0] # Force little-endian result of the read.
 
 def ReadLong(f):
     return struct.unpack("<q", f.read(8))[0]

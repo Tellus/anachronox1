@@ -47,10 +47,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ApeSupport\ApeSupport.csproj">
+      <Project>{3044E33A-F763-4E3C-8BDA-44F2C403E468}</Project>
+      <Name>ApeSupport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\DAT_Extract\DatSupport.csproj">
       <Project>{8385BBB6-BD30-4FCA-A18A-1C29634E85BF}</Project>
       <Name>DatSupport</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="files\braintrain.ape">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

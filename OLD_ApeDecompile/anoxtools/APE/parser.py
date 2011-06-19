@@ -76,6 +76,16 @@ stringCommands = {
     20: ("loadape", 1),
 }
 
+def IntegerToLabel(v):
+    """ v: The integer which is an APE label.
+
+        Purpose: Take the compiled label form and convert it to the APE code label form.
+    """
+    if v == 0:
+        return "0:0"
+    s = str(v)
+    s1, s2 = s[:-4], int(s[-4:])
+    return "%s:%s" % (s1, s2)
 
 # ================================================================
 
@@ -84,6 +94,7 @@ from anoxtools.APE import parserEntities
 from anoxtools.APE.parserEntities import FormattingValue, StatementValue, StringValue, ExpressionValue, AssignmentExpressionValue, CommaSeparatedValues
 
 # Big schizmo decompiler fagimmeny.
+# It's parent's initializer/constructor only seems to place a passed value into a value property and nothing else.
 class APEDecompiler(parserEntities.Value):
     def Read(self, f):
         self.fileLength = os.path.getsize(f.name)
@@ -605,14 +616,3 @@ class APEDecompiler(parserEntities.Value):
         return expr1, expr2, cc
 
 # ================================================================
-
-def IntegerToLabel(v):
-    """ v: The integer which is an APE label.
-
-        Purpose: Take the compiled label form and convert it to the APE code label form.
-    """
-    if v == 0:
-        return "0:0"
-    s = str(v)
-    s1, s2 = s[:-4], int(s[-4:])
-    return "%s:%s" % (s1, s2)

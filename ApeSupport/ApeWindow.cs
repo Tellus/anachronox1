@@ -6,9 +6,10 @@ using System.Text;
 namespace ApeSupport
 {
     /// <summary>
-    /// The APE Manager class handles import, decompilation, export and recompilation of APE scripts, either byte-coded or pure-text.
+    /// Represents a window written in APE.
     /// </summary>
-    public class ApeMgr
+    /// <seealso cref="ApeSwitch"/>
+    class ApeWindow : ApeSegment
     {
 
     }
