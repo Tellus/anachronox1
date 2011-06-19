@@ -57,6 +57,30 @@ namespace ApeSupport
             }
         }
 
+        private Int32 _returnCode;
+
+        /// <summary>
+        /// The return code is currently only 0 or 1 depending on whether a general exit command
+        /// was issued.
+        /// </summary>
+        /// <remarks>There are two approaches. Legacy APE only supports one real exit condition, the
+        /// exit command itself (bytecode 69...). However, future revision might benefit from various
+        /// branching exit statements (who knows) - it could also be used to further compress the
+        /// binary format by adding in an exit flag in a bytecode instead. Given the latter option,
+        /// using this form of exit status is preferable as it is both backwards and forwards compatbiel.
+        /// </remarks>
+        public Int32 ReturnCode
+        {
+            get
+            {
+                return _returnCode;
+            }
+            set
+            {
+                _returnCode = value;
+            }
+        }
+
         /// <summary>
         /// Constructor for a new ApeCommand.
         /// </summary>
@@ -65,16 +89,6 @@ namespace ApeSupport
         {
             Bytecode = bytecode;
             Name = name;
-        }
-
-        public byte[] Compile(string input)
-        {
-            return new byte[0];
-        }
-
-        public void Decompile(FileStream input)
-        {
-
         }
 
         public abstract void Execute(FileStream input);

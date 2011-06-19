@@ -11,7 +11,7 @@ namespace ApeSupport
     /// Contains an amount of static methods used by ApeFile (and possibly other assemblies) for APE-specific conversions.
     /// Command/bytecode constants and the like is also defined herein.
     /// </summary>
-    static public class ApeCore
+    public static class ApeCore
     {
         /// <summary>
         /// The Operators member offers methods to translate operator enums to their
@@ -26,10 +26,17 @@ namespace ApeSupport
         /// </summary>
         public static Dictionary<Int32, ApeCommand> Commands;
 
+        /// <summary>
+        /// Collection of simple commands. There are about 16 of them in Richard's model,
+        /// possibly even more if the other bytecodes ar analyzed.
+        /// </summary>
+        public static Dictionary<Int32, StringCommandStruct> StringCommands;
+
         static ApeCore()
         {
             InitializeOperatorsList();
             InitializeCommands();
+            InitializeStringCommands();
         }
 
         /// <summary>
@@ -86,6 +93,29 @@ namespace ApeSupport
             Operators = new ApeOperatorHelper();
         }
 
+        static public void InitializeStringCommands()
+        {
+            // Shorthand because my hand will hurt otherwise.
+            Dictionary<Int32, StringCommandStruct> c = StringCommands;
+
+            c.Add(4, new StringCommandStruct("goto", false));
+            c.Add(5, new StringCommandStruct("gosub", false));
+            c.Add(6, new StringCommandStruct("console", true));
+            c.Add(7, new StringCommandStruct("echo", true));
+            c.Add(8, new StringCommandStruct("target", false));
+            c.Add(9, new StringCommandStruct("pathtarget", false));
+            c.Add(10, new StringCommandStruct("extern", false));
+            c.Add(12, new StringCommandStruct("playambient", false));
+            c.Add(13, new StringCommandStruct("loopambient", false));
+            c.Add(14, new StringCommandStruct("stopambient", false));
+            c.Add(15, new StringCommandStruct("playscene", false));
+            c.Add(16, new StringCommandStruct("loopscene", false));
+            c.Add(17, new StringCommandStruct("stopscene", false));
+            c.Add(18, new StringCommandStruct("chainscripts", false));
+            c.Add(19, new StringCommandStruct("closewindow", false));
+            c.Add(20, new StringCommandStruct("loadape", true));
+        }
+
         /// <summary>
         /// Converts a label in compiled form and turns it into a decompiled label.
         /// </summary>
@@ -125,8 +155,20 @@ namespace ApeSupport
             // Read the data.
             f.Read(b, 0, size);
 
-            // Convert correctly and return.
-            return (T)_getCastMethod(typeof(T)).Invoke(null, new object[] { b, 0 });
+            // Special branching case. We want byte support, but it is a type that cannot be handled
+            // by BitConverter (because... well... bitconverter converts FROM bytes.
+            if (typeof(T) == typeof(Byte))
+            {
+                // The compiler dislikes cast from byte to T although we know it's valid byte to byte.
+                // We use object as a middleman. Ugly, but safe given the context.
+                object tmp = (object)b[0];
+                return (T)tmp;
+            }
+            else
+            {
+                // Convert correctly and return.
+                return (T)_getCastMethod(typeof(T)).Invoke(null, new object[] { b, 0 });
+            }
         }
 
         /// <summary>
@@ -182,10 +224,22 @@ namespace ApeSupport
         /// <summary>
         /// Specialized read method for reading strings from a binary APE file.
         /// </summary>
-        /// <param name="input">File to read from. Pointer position will NOT be reversed.</param>
-        /// <param name="numBytes">Number of bytes to read.</param>
-        static public string ReadString(FileStream input, int numBytes = 1)
+        /// <param name="input">File to read from. Pointer position will NOT be reset.</param>
+        /// <param name="numBytes">Number of bytes to read. If omitted, the next Int32 in the filestream
+        /// is assumed to contain string length.</param>
+        static public string ReadString(FileStream input, int numBytes = -1)
         {
+            // If numbytes have been left out, we make the assumption that the first integer gives us
+            // the string's length.
+            if (numBytes == -1)
+            {
+                numBytes = ReadValue<Int32>(input);
+            }
+            else if (numBytes <= 0)
+            {
+                throw new ArgumentOutOfRangeException("The passed number of of bytes (" + numBytes + ") is invalid. Use a positive value.");
+            }
+
             // Prepare the output byte array.
             byte[] bytes = new byte[numBytes];
 
@@ -198,6 +252,56 @@ namespace ApeSupport
             input.ReadByte(); // Disregard a byte.
 
             return s;
+        }
+
+        /// <summary>
+        /// Retrieves a known ApeCommand instance or null.
+        /// </summary>
+        /// <param name="bytecode">Bytecode of the requested command.</param>
+        /// <returns>ApeCommand instance from Commands or null.</returns>
+        static public ApeCommand GetApeCommand(Int32 bytecode)
+        {
+            // If the complex command list (Commands) contains the command, return it.
+            // If *not*, see if the simple command list (StringCommands) has it. If that
+            // is the case, prep SimpleApeCommand for that simple command and return it.
+            if (Commands.ContainsKey(bytecode))
+            {
+                return Commands[bytecode];
+            }
+            else if (StringCommands.ContainsKey(bytecode))
+            {
+                // Prepare the SimpleApeCommand instance with the bytecode and name of the requested
+                // command.
+                Commands[-1].Bytecode = bytecode;
+                Commands[-1].Name = StringCommands[bytecode].Name;
+                return Commands[-1];
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Simple struct of name and quote modifier for simple one-parameter APE commands.
+    /// </summary>
+    public struct StringCommandStruct
+    {
+        /// <summary>
+        /// Name of the command in question.
+        /// </summary>
+        public string Name;
+
+        /// <summary>
+        /// True if the value for the command should be quoted, false otherwise.
+        /// </summary>
+        public bool IsQuoted;
+
+        public StringCommandStruct(string name, bool quoted)
+        {
+            Name = name;
+            IsQuoted = quoted;
         }
     }
 }

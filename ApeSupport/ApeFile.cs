@@ -347,7 +347,8 @@ namespace ApeSupport
             Int32 commandCode = BitConverter.ToInt32(commandCodeAsByte, 0);
 
             // Is it a known command?
-            if (ApeCore.Commands.ContainsKey(commandCode))
+            ApeCommand com = ApeCore.GetApeCommand(commandCode);
+            if (com != null)
             {
                 ApeCore.Commands[commandCode].Execute(SourceFile);
             }
