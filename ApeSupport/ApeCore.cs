@@ -172,7 +172,9 @@ namespace ApeSupport
         {
             string s = ReadString(input, numBytes);
 
-            s.Replace("\\", "\\\\").Replace("\n", "\\n").Replace("\"", "\\\"");
+            s.Replace("\\", "\\\\")
+             .Replace("\n", "\\n")
+             .Replace("\"", "\\\"");
 
             return s;
         }
