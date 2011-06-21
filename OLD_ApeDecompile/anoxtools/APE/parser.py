@@ -299,27 +299,6 @@ class APEDecompiler(parserEntities.Value):
             fmt = FormattingValue(f)
             label = IntegerToLabel(structures.ReadInteger(f))
 
-            # Debugging helper.
-            #idx1 = f.tell()
-            #fmt = FormattingValue(f)
-            #idx2 = f.tell()
-            #print "fmt",
-            #f.seek(idx1)
-            #while idx1 < idx2:
-            #    print ord(f.read(1)),
-            #    idx1 += 1
-            #print
-
-            # We need to kludge this statement a little depending on
-            # whether the print parameters have just a string or
-            # formatting information.  The reason for this is that
-            # if there is formatting information, then there is a
-            # comma trailing the print parameters before the label
-            # and otherwise there is no comma.
-            #
-            # choice "%s", wibble$, 3:3
-            # choice "blah" 3:3
-
             statement = StatementValue("choice")
             if len(conditions) == 1:
                 statement.SetCondition(conditions[0])

@@ -303,18 +303,10 @@ class NestedStatementsValue(Value):
         self.cntStart = self.CountBits(cc)
         self.ccStart = cc
 
-        # print "NSV - START     ", self.Binary(cc), self.parent is not None and self.parent.__class__.__name__, "|", self.name, self.condition
         while 1:
             lastCC = cc
             ret, cc = readCommand(f, self)
 
-            #value = self.values[-1]
-            #if isinstance(value, NestedStatementsValue):
-            #    print "READ", value.name, "_condition=", value.condition
-            #else:
-            #    print "READ", value, "_condition=", value is not None and value.condition
-            #
-            #print "NSV - RC", self.Binary(cc), self.Binary(lastCC << 2)
             if ret == 0:
                 raise RuntimeError("Unexpected ret", ret, cc)
             if cc is None:
@@ -329,10 +321,6 @@ class NestedStatementsValue(Value):
 
                 if cntBefore < cntAfter:
                     if self.IsFromParentLevel(cc):
-                        #print "NO EXIT (ccStart)", (self.Binary(self.ccStart), self.cntStart)
-                        #print "NO EXIT (  ccEnd)", (self.Binary(cc), cntAfter)
-                        #print "PARENT           ", self.parent is not None and (self.Binary(self.parent.ccStart), self.CountBits(self.parent.ccStart))
-                        #print "NSV - EXIT - 4"
                         break
                     elif cc & shiftMaskInNew == 2:
                         self.exitCount = 0
@@ -352,19 +340,14 @@ class NestedStatementsValue(Value):
                         self.Add(None)
                     else:
                         # Last statement in a nesting.
-                        # print "NSV - EXIT - 2"
                         break
                 elif cntBefore == cntAfter and (lastCC & shiftMaskInNew) in (1, 2) and (cc & shiftMaskInNew) == 3:
                     # This was the only clause following an else.  Drop out to give the next clause to the container.
-                    # print "NSV - EXIT - 3"
                     break
                 elif cntBefore == cntAfter and (lastCC & shiftMaskInNew) == 1 and (cc & shiftMaskInNew) == 2:
                     self.Add(None)
                 else:
                     raise RuntimeError("Unexpected movement", Binary(lastCC, 64), cntBefore, Binary(cc, 64), cntAfter, cmds)
-            #elif cc & shiftMaskInNew == 1:
-            #    print "NSV - EXIT - 4"
-            #    break
             elif cc & shiftMaskInNew != 3:
                 print "NSV lastCC1", self.Binary(lastCC1)
                 print "NSV lastCC ", self.Binary(lastCC)
